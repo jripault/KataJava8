@@ -4,6 +4,8 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -17,11 +19,10 @@ public class StreamTest {
         //Given
 
         //When
-        List<String> abcList = new ArrayList<String>();
+        List<String> abcList = Stream.of("a", "b", "c").collect(Collectors.toList());
 
         //Then
-
-        assertThat(abcList).contains("a", "b", "c");
+        assertThat(abcList).containsExactly("a", "b", "c");
     }
 
     @Test
@@ -29,9 +30,9 @@ public class StreamTest {
         //Given
 
         //When
-        List<Integer> numbersList = new ArrayList<Integer>();
+        List<Integer> numbersList = Stream.iterate(0, ele -> ele + 3).limit(10).collect(Collectors.toList());
 
         //Then
-        assertThat(numbersList).contains(0, 3, 6, 9, 12, 15, 18, 21, 24, 27);
+        assertThat(numbersList).containsExactly(0, 3, 6, 9, 12, 15, 18, 21, 24, 27);
     }
 }
