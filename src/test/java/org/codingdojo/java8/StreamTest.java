@@ -17,9 +17,10 @@ public class StreamTest {
         //Given
 
         //When
+        List<String> abcList = new ArrayList<String>();
 
         //Then
-        List<String> abcList = new ArrayList<String>();
+
         assertThat(abcList).contains("a", "b", "c");
     }
 
@@ -28,9 +29,9 @@ public class StreamTest {
         //Given
 
         //When
+        List<Integer> numbersList = new ArrayList<Integer>();
 
         //Then
-        List<Integer> numbersList = new ArrayList<Integer>();
         assertThat(numbersList).contains(0, 3, 6, 9, 12, 15, 18, 21, 24, 27);
     }
 }
