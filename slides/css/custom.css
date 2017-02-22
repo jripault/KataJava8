@@ -1,0 +1,79 @@
+img {
+    width: 25%;
+}
+
+.img-centered {
+    width: 80%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.pagination {
+    right: 2.6em;
+}
+
+.strike {
+    text-decoration: line-through;
+    padding-left: 70px;
+}
+
+li {
+    padding-left: 1em;
+    font-size: 30px;
+    padding-bottom: 10px;
+}
+
+ul .items {
+    list-style: disc inside;
+}
+
+a {
+    text-decoration: underline;
+}
+
+.subSection {
+    padding-left: 70px;
+}
+
+.coding-dojo.title {
+    background: #0066A1;
+    border: none;
+    color: white;
+}
+
+.coding-dojo {
+    border-left: solid 0.6em #0066A1;
+}
+
+.kata.title {
+    background: orange;
+    border: none;
+    color: white;
+}
+
+.kata {
+    border-left: solid 0.6em orange;
+}
+
+.iteration.title {
+    background: #DD1B16;
+    border: none;
+    color: white;
+}
+
+.iteration {
+    border-left: solid 0.6em #DD1B16;
+}
+
+p{
+    font-size:0.5em;
+}
+
+pre.prettyprint{
+    font-size: 0.5em;
+}
+
+h2{
+    margin: 20px;
+}

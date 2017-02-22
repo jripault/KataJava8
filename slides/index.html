@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Coding Dojo : Java8 et les streams</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="components/normalize-css/normalize.css"/>
+    <link rel="stylesheet" href="components/font-awesome/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="components/highlightjs/styles/tomorrow.css"/>
+    <link rel="stylesheet" href="css/ruban.css"/>
+    <link rel="stylesheet" href="css/ruban-print.min.css" media="print"/>
+    <link rel="stylesheet" href="css/custom.css"/>
+</head>
+
+<body>
+<section id="coding-dojo" class="coding-dojo title">
+    <h1><img class="img-centered" src="images/codingDojo.png"></h1>
+</section>
+
+<section id="intro" class="coding-dojo">
+    <h1>Coding Dojo ?</h1>
+    <ul class="steps">
+        <li>C'est quoi ?</li>
+        <!-- Dojo : lieu d'apprentissage des arts martiaux - Kata : forme d'entrainement, répétition d'un exercice -->
+        <li class="subSection">Lieu d'apprentissage</li>
+        <li>Pour quoi faire ?</li>
+        <!-- l'objectif premier est d'apprendre et non pas de terminer l'excercice -->
+        <li class="strike">Terminer l'exercice</li>
+        <li class="strike">Compétition</li>
+        <li class="subSection">S'améliorer en développement</li>
+        <li class="subSection"><strong>APPRENDRE !</strong></li>
+        <li>Terrain d'entrainement</li>
+        <!-- Safe (no prod), error is ok, favoriser l'échange -->
+        <li class="strike">Pression</li>
+        <li class="subSection">Error is ok</li>
+    </ul>
+</section>
+<section id="organisation" class="coding-dojo">
+    <h1>Organisation</h1>
+    <ul class="steps">
+        <li>Pair Programming</li>
+        <li>TDD :
+            <ul>
+                <li style="color: red">Red</li>
+                <li style="color: #008000">Green</li>
+                <li>Refactor</li>
+            </ul>
+        </li>
+        <li>Sujet : Java 8 et les streams</li>
+    </ul>
+</section>
+<section id="planning" class="coding-dojo">
+    <h1><i class="fa fa-clock-o"></i> Planning du dojo</h1>
+    <ul>
+        <li>Théorie ?</li>
+        <li>TODO</li>
+    </ul>
+</section>
+<section id="installation" class="coding-dojo">
+    <h1><i class="fa fa-download"></i> Installation</h1>
+    <ul>
+        <li>
+            Environnement : (Eclipse ou pour change <a href="https://www.jetbrains.com/idea/">IntelliJ</a>)
+        </li>
+        <li><a href="https://github.com/jripault/KataMock">Le code</a></li>
+        <li>Pour les tests :
+            <ul>
+                <li><a href="http://junit.org/">Junit</a></li>
+                <li>
+                    <a href="http://joel-costigliola.github.io/assertj/">AssertJ</a> (librairie d'assertions, fork de
+                    FestAssert)
+                </li>
+                <li><a href="http://www.eclemma.org/">Eclemma</a> (plugin couverture de code sous Eclipse)</li>
+                <li>
+                    <a href="http://infinitest.github.io/">InfiniTest</a> (plugin IntelliJ/Eclipse pour lancer les tests
+                    unitaires automatiquement à chaque changement)
+                </li>
+                <li>
+                    <a href="http://moreunit.sourceforge.net/">MoreUnit</a> (plugin IntelliJ/Eclipse pour améliorer
+                    l'intégration de ses tests unitaires dans l'IDE)
+                </li>
+            </ul>
+        </li>
+    </ul>
+</section>
+
+<section id="kata" class="kata title">
+    <h1 style="text-align: center;">Kata !!!</h1>
+    <ul class="steps">
+        <li>
+            <blockquote>Whatever luck I had, I made. I was never a natural athlete, but I paid my dues in sweat and
+                concentration and took the time necessary to learn Karate and become World Champion.
+            </blockquote>
+        </li>
+        <li>
+            <small>Chuck Norris (American martial artist and actor. Also, the only man who has counted to infinity.
+                <strong>Twice.</strong>)
+            </small>
+        </li>
+    </ul>
+</section>
+
+<section id="theorie" class="coding-dojo">
+    <h1><i class="fa"></i>Un peu de théorie</h1>
+    <h4>Quoi de neuf dans Java 8</h4>
+    <ul class="items">
+        <li>Collections - forEach, ...</li>
+        <li>Interfaces - default method</li>
+        <li>Date & Time</li>
+        <li>Lambda</li>
+        <li>Stream</li>
+    </ul>
+</section>
+
+<section id="iteration1" class="iteration title">
+    <h1>On commence doucement (20 min)</h1>
+</section>
+
+<section id="memo" class="coding-dojo">
+    <h2>Mémo</h2>
+    <ul class="items steps">
+        <li>TODO</li>
+    </ul>
+</section>
+
+<section id="iteration2" class="iteration title">
+    <h1>Allez, on tente un peu plus dur ! (10 min)</h1>
+</section>
+
+<section id="retro2" class="iteration">
+    <h1>Rétro (5 min)</h1>
+    <ul class="steps">
+        <li>Difficultés rencontrées</li>
+        <li>Type de mock</li>
+        <li>Périmètre du test</li>
+    </ul>
+</section>
+
+<section id="iteration3" class="iteration title">
+    <h1>Et là, c'est chaud ou pas ? (15 min)</h1>
+</section>
+
+<section id="retro3" class="iteration">
+    <h1>Rétro (5 min)</h1>
+    <ul class="steps">
+        <li>Difficultés rencontrées</li>
+        <li>Type de mock</li>
+        <li>Périmètre du test</li>
+    </ul>
+</section>
+
+<section id="retro_final" class="iteration">
+    <h1>Rétro du Dojo (10 min)</h1>
+    <ul class="steps">
+        <li>What went well ?</li>
+        <li>What could be improved ?</li>
+        <li>Actions</li>
+        <li>ROTI</li>
+    </ul>
+</section>
+
+
+<section id="references" class="coding-dojo">
+    <h1><i class="fa fa-book"></i> Références</h1>
+    <p>TODO livre Java 8</p>
+    <a href="http://www.amazon.fr/Test-Driven-Development-By-Example/dp/0321146530"><img
+            src="images/testDrivenDevelopmentByExample.jpg"/></a>
+    <a href="http://www.amazon.fr/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882"><img
+            src="images/cleanCode.jpg"/></a>
+    <a href="http://www.amazon.fr/Effective-Java-Joshua-Bloch/dp/0321356683"><img
+            src="images/refactoringImprovingDesignExistingCode.jpg"/></a>
+    <a href="http://www.amazon.fr/Refactoring-Improving-Design-Existing-Code/dp/0201485672"><img
+            src="images/effectiveJava.jpeg"/></a>
+</section>
+
+<script src="components/jquery/jquery.min.js"></script>
+<script src="components/keymaster/keymaster.js"></script>
+<script src="components/hammerjs/hammer.min.js"></script>
+<script src="components/highlightjs/highlight.pack.js"></script>
+<script src="components/prettify/run_prettify.js"></script>
+<script src="js/ruban.min.js"></script>
+<script>
+    var ruban = new Ruban({
+        pagination: true
+    });
+</script>
+</body>
+</html>
