@@ -12,6 +12,7 @@ import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.not;
+import static org.assertj.core.api.Assertions.offset;
 import static org.assertj.core.data.MapEntry.entry;
 
 /**
@@ -26,11 +27,10 @@ public class GildedRoseStreamTest {
         GildedRose shop = company.shop();
 
         //When
-        //filter collect
+        List<Item> items = new ArrayList<>();
 
         //Then
-        List<Item> items = new ArrayList<>();
-        assertThat(items).hasSize(5).extracting("name").containsOnlyOnce("+5 Dexterity Vest");
+        assertThat(items).hasSize(2).extracting("name").containsOnly("+5 Dexterity Vest", "Conjured Mana Cake");
     }
 
     @Test
@@ -39,10 +39,9 @@ public class GildedRoseStreamTest {
         GildedRose shop = company.shop();
 
         //When
-        //map
+        List<Integer> itemsQuality = new ArrayList<>();
 
         //Then
-        List<Integer> itemsQuality = new ArrayList<>();
         assertThat(itemsQuality).containsExactlyInAnyOrder(10,0,10,25,20,30,20);
     }
 
@@ -52,17 +51,16 @@ public class GildedRoseStreamTest {
         GildedRose shop = company.shop();
 
         //When
-        //sorted
+        List<String> itemsName = new ArrayList<>();
 
         //Then
-        List<String> itemsName = new ArrayList<>();
         assertThat(itemsName).containsExactly("+5 Dexterity Vest",
                 "+5 Dexterity Vest",
                 "Aged Brie",
-                "Sulfuras, Hand of Ragnaros ",
                 "Backstage passes to a TAFKAL80ETC concert",
                 "Backstage passes to a TAFKAL80ETC concert",
-                "Conjured Mana Cake");
+                "Conjured Mana Cake",
+                "Sulfuras, Hand of Ragnaros");
     }
 
     @Test
@@ -71,11 +69,10 @@ public class GildedRoseStreamTest {
         GildedRose shop = company.shop();
 
         //When
-        //custom sort
+        List<Integer> itemsSellIn = new ArrayList<>();
 
         //Then
-        List<Integer> itemsSellIn = new ArrayList<>();
-        assertThat(itemsSellIn).containsExactly(50,20,15,10,10,5,-1);
+        assertThat(itemsSellIn).containsExactly(50,20,15,10,10,5,0);
     }
 
     @Test
@@ -84,12 +81,11 @@ public class GildedRoseStreamTest {
         GildedRose shop = company.shop();
 
         //When
-        // sort limit
+        List<Item> items = new ArrayList<>();
 
         //Then
-        List<Item> items = new ArrayList<>();
         assertThat(items).extracting("name")
-                .containsExactly("Sulfuras, Hand of Ragnaros",
+                .containsOnly("Sulfuras, Hand of Ragnaros",
                         "Aged Brie",
                         "Backstage passes to a TAFKAL80ETC concert");
     }
@@ -100,9 +96,9 @@ public class GildedRoseStreamTest {
         GildedRose shop = company.shop();
 
         //When
+        List<Integer> itemsQuality = new ArrayList<>();
 
         //Then
-        List<Integer> itemsQuality = new ArrayList<>();
         assertThat(itemsQuality).containsExactlyInAnyOrder(0,10,20,25,30);
     }
 
@@ -112,9 +108,9 @@ public class GildedRoseStreamTest {
         GildedRose shop = company.shop();
 
         //When
+        Integer total = 0;
 
         //Then
-        Integer total = 0;
         assertThat(total).isEqualTo(110);
     }
 
@@ -124,9 +120,9 @@ public class GildedRoseStreamTest {
         GildedRose shop = company.shop();
 
         //When
+        Integer maxQuality = 0;
 
         //Then
-        Integer maxQuality = 0;
         assertThat(maxQuality).isEqualTo(30);
     }
 
@@ -136,10 +132,9 @@ public class GildedRoseStreamTest {
         GildedRose shop = company.shop();
 
         //When
-        // count
+        Integer minSellIn = 0;
 
         //Then
-        Integer minSellIn = 0;
         assertThat(minSellIn).isEqualTo(0);
     }
 
@@ -149,9 +144,9 @@ public class GildedRoseStreamTest {
         GildedRose shop = company.shop();
 
         //When
+        Item firstItem = null;
 
         //Then
-        Item firstItem = null;
         assertThat(firstItem.getName()).isEqualTo("+5 Dexterity Vest");
         assertThat(firstItem.getSellIn()).isEqualTo(10);
         assertThat(firstItem.getQuality()).isEqualTo(10);
@@ -163,10 +158,9 @@ public class GildedRoseStreamTest {
         GildedRose shop = company.shop();
 
         //When
-        // anyMatch
+        boolean hasItemWithNoQuality = false;
 
         //Then
-        boolean hasItemWithNoQuality = false;
         assertThat(hasItemWithNoQuality).isEqualTo(true);
     }
 
@@ -176,10 +170,9 @@ public class GildedRoseStreamTest {
         GildedRose shop = company.shop();
 
         //When
-        // allMatch
+        boolean allItemsHaveName = false;
 
         //Then
-        boolean allItemsHaveName = false;
         assertThat(allItemsHaveName).isEqualTo(true);
     }
 
@@ -189,9 +182,9 @@ public class GildedRoseStreamTest {
         GildedRose shop = company.shop();
 
         //When
+        String names = "";
 
         //Then
-        String names = "";
         assertThat(names).isEqualTo("[+5 Dexterity Vest,+5 Dexterity Vest,Aged Brie,Sulfuras, Hand of Ragnaros,Backstage passes to a TAFKAL80ETC concert,Backstage passes to a TAFKAL80ETC concert,Conjured Mana Cake]");
     }
 
@@ -201,14 +194,15 @@ public class GildedRoseStreamTest {
         GildedRose shop = company.shop();
 
         //When
+        Map<Integer, Long> qualitiesItems = new HashMap<>();
 
         //Then
-        Map<Integer, List<String>> qualitiesItems = new HashMap<>();
-        assertThat(qualitiesItems).hasSize(5).containsOnly(entry(0, null),
-                entry(10, null),
-                entry(20, null),
-                entry(25, null),
-                entry(30, null));
+        assertThat(qualitiesItems).hasSize(5).containsOnly(
+                entry(0, 1L),
+                entry(10, 2L),
+                entry(20, 2L),
+                entry(25, 1L),
+                entry(30, 1L));
     }
 
     @Test
@@ -217,10 +211,10 @@ public class GildedRoseStreamTest {
         GildedRose shop = company.shop();
 
         //When
+        double averageSellIn = 0;
 
         //Then
-        double averageSellIn = 0;
-        assertThat(averageSellIn).isEqualTo(15.71);
+        assertThat(averageSellIn).isEqualTo(15.71, offset(0.01));
     }
 
 
@@ -230,10 +224,9 @@ public class GildedRoseStreamTest {
         List<GildedRose> shops = company.getShops();
 
         //When
-        // flatMap
+        List<Integer> qualities = new ArrayList<>();
 
         //Then
-        List<Integer> qualities = new ArrayList<>();
         assertThat(qualities).containsOnly(10,0,10,25,20,30,20,0,0,50,49,20,1);
     }
 
@@ -243,9 +236,9 @@ public class GildedRoseStreamTest {
         List<GildedRose> shops = company.getShops();
 
         //When
+        Integer priceOfAllItems = 0;
 
         //Then
-        Integer priceOfAllItems = 0;
         assertThat(priceOfAllItems).isEqualTo(155);
     }
 
@@ -255,9 +248,9 @@ public class GildedRoseStreamTest {
         List<GildedRose> shops = company.getShops();
 
         //When
+        List<String> notSellingItems = new ArrayList<>();
 
         //Then
-        List<String> notSellingItems = new ArrayList<>();
         assertThat(notSellingItems).containsOnly("+5 Dexterity Vest", "+5 Dexterity Vest", "Backstage passes to a TAFKAL80ETC concert");
     }
 }
