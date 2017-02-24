@@ -22,7 +22,7 @@ public class GildedRoseStreamTest {
     private GildedRoseCompany company = new GildedRoseCompany();
 
     @Test
-    public void shouldFilterBySellIn() throws Exception {
+    public void shouldFilterBySellEquals10() throws Exception {
         //Given
         GildedRose shop = company.shop();
 
@@ -46,7 +46,7 @@ public class GildedRoseStreamTest {
     }
 
     @Test
-    public void shouldSort() throws Exception {
+    public void shouldSortByName() throws Exception {
         //Given
         GildedRose shop = company.shop();
 
@@ -64,7 +64,7 @@ public class GildedRoseStreamTest {
     }
 
     @Test
-    public void shouldSortDescending() throws Exception {
+    public void shouldSortBySellInDescending() throws Exception {
         //Given
         GildedRose shop = company.shop();
 
