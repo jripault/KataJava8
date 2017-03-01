@@ -103,11 +103,61 @@
     <h1><i class="fa"></i>Un peu de théorie</h1>
     <h4>Quoi de neuf dans Java 8</h4>
     <ul class="items">
-        <li>Collections - forEach, ...</li>
         <li>Interfaces - default method</li>
         <li>Date & Time</li>
-        <li>Lambda</li>
-        <li>Stream</li>
+        <li>Optional</li>
+        <li>Lambda & FunctionalInterface</li>
+        <li>Collections - forEach, ...</li>
+        <li>Streams</li>
+    </ul>
+</section>
+
+<section id="theorie-optional" class="coding-dojo">
+    <h1><i class="fa"></i>Un peu de théorie - Optional</h1>
+    <ul>
+        <li>Représente la présence ou non d'une valeur : <pre>Optional&lt;Integer&gt;</pre></li>
+        <li>Eviter les null checks (isPresent, ifPresent)
+            <pre>personRepository.getWinnerByName2(name)
+                .ifPresent(p -> sendMail(p.getMail(), "You win..."));</pre>
+        </li>
+        <li>orElse, orElseGet, orElseThrow
+            <pre>personRepository.getWinnerByName3("Wendy")
+        .orElse(new Person().setName("anonymous"))
+        .getName());
+            </pre>
+            <pre>personRepository.getWinnerByName3("Wendy")
+                    .orElseGet(() -> personRepository.getWinnerByName3("Mathilde").get())
+                    .getName());
+            </pre>
+            <pre>personRepository.getWinnerByName3("Wendy")
+                .orElseThrow(IllegalArgumentException::new);
+            </pre>
+        </li>
+    </ul>
+</section>
+
+<section id="theorie-fi" class="coding-dojo">
+    <h1><i class="fa"></i>Un peu de théorie - FunctionalInterface</h1>
+    <ul>
+        <li>Interface avec une unique méthode abstraite</li>
+        <li><pre>@FunctionalInterface</pre> (pas obligatoire)</li>
+        <li>A la base des lambdas</li>
+    </ul>
+</section>
+
+<section id="theorie-lambda" class="coding-dojo">
+    <h1><i class="fa"></i>Un peu de théorie - Lambda</h1>
+    <ul>
+        <li>Eviter les classes anonymes
+            <pre>Name res = parser.parse("Eric Clapton", new Creator&lt;Name&gt;() {
+    @Override
+    public Name create(String firstName, String lastName) {
+        return new Name(firstName, lastName);
+    }
+});</pre>
+            Remplacé par :
+            <pre>Name res = parser.parse("Eric Clapton", Name::new);</pre>
+        </li>
     </ul>
 </section>
 
