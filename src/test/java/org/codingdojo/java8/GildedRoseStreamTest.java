@@ -189,7 +189,7 @@ public class GildedRoseStreamTest {
     }
 
     @Test
-    public void shouldGroupBySellIn() throws Exception {
+    public void shouldGroupByQuality() throws Exception {
         //Given
         GildedRose shop = company.shop();
 
