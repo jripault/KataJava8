@@ -1,8 +1,5 @@
 package org.codingdojo.java8;
 
-import org.codingdojo.java8.GildedRose;
-import org.codingdojo.java8.GildedRoseCompany;
-import org.codingdojo.java8.Item;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -11,7 +8,6 @@ import java.util.List;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.not;
 import static org.assertj.core.api.Assertions.offset;
 import static org.assertj.core.data.MapEntry.entry;
 
