@@ -135,7 +135,7 @@ public class GildedRoseStreamTest {
         Integer minSellIn = 0;
 
         //Then
-        assertThat(minSellIn).isEqualTo(0);
+        assertThat(minSellIn).isZero();
     }
 
     @Test
@@ -161,7 +161,7 @@ public class GildedRoseStreamTest {
         boolean hasItemWithNoQuality = false;
 
         //Then
-        assertThat(hasItemWithNoQuality).isEqualTo(true);
+        assertThat(hasItemWithNoQuality).isTrue();
     }
 
     @Test
@@ -173,7 +173,7 @@ public class GildedRoseStreamTest {
         boolean allItemsHaveName = false;
 
         //Then
-        assertThat(allItemsHaveName).isEqualTo(true);
+        assertThat(allItemsHaveName).isTrue();
     }
 
     @Test
@@ -216,7 +216,6 @@ public class GildedRoseStreamTest {
         //Then
         assertThat(averageSellIn).isEqualTo(15.71, offset(0.01));
     }
-
 
     @Test
     public void shouldGetQualityFromAllShops() throws Exception {
