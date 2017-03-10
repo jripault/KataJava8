@@ -80,7 +80,8 @@ public class GildedRoseStreamTest {
 
         //When
         List<Item> items = shop.getItems().stream()
-                .sorted((o1, o2) -> o2.getSellIn() - o1.getSellIn())
+                .sorted(Comparator.comparing(Item::getSellIn).reversed())
+                // Or: .sorted((o1, o2) -> o2.getSellIn() - o1.getSellIn())
                 .limit(3)
                 .collect(Collectors.toList());
 
@@ -162,9 +163,11 @@ public class GildedRoseStreamTest {
         GildedRose shop = company.shop();
 
         //When
-        boolean hasItemWithNoQuality = shop.getItems().stream().anyMatch(item -> item.getQuality() > 0);
+        boolean hasItemWithNoQuality = shop.getItems().stream()
+                .map(Item::getQuality).anyMatch(quality -> quality > 0);
+        // Or: .anyMatch(item -> item.getQuality() > 0);
 
-                //Then
+        //Then
         assertThat(hasItemWithNoQuality).isEqualTo(true);
     }
 
@@ -174,7 +177,9 @@ public class GildedRoseStreamTest {
         GildedRose shop = company.shop();
 
         //When
-        boolean allItemsHaveName = shop.getItems().stream().allMatch(item -> !Strings.isNullOrEmpty(item.getName()));
+        boolean allItemsHaveName = shop.getItems().stream()
+                .map(Item::getName).noneMatch(Strings::isNullOrEmpty);
+        // Or: .allMatch(item -> !Strings.isNullOrEmpty(item.getName()));
 
         //Then
         assertThat(allItemsHaveName).isEqualTo(true);
@@ -223,7 +228,6 @@ public class GildedRoseStreamTest {
         assertThat(averageSellIn).isEqualTo(15.71, offset(0.01));
     }
 
-
     @Test
     public void shouldGetQualityFromAllShops() throws Exception {
         //Given
@@ -231,7 +235,9 @@ public class GildedRoseStreamTest {
 
         //When
         List<Integer> qualities = shops.stream()
-                .flatMap(gildedRose -> gildedRose.getItems().stream())
+                .map(GildedRose::getItems)
+                .flatMap(List::stream)
+                //Or: .flatMap(gildedRose -> gildedRose.getItems().stream())
                 .map(Item::getQuality).collect(Collectors.toList());
 
         //Then
@@ -245,7 +251,8 @@ public class GildedRoseStreamTest {
 
         //When
         Integer priceOfAllItems = shops.stream()
-                .flatMap(gildedRose -> gildedRose.getItems().stream())
+                .map(GildedRose::getItems)
+                .flatMap(List::stream)
                 .mapToInt(Item::getSellIn).sum();
 
         //Then
@@ -259,11 +266,12 @@ public class GildedRoseStreamTest {
 
         //When
         List<String> notSellingItems = shops.stream()
-                .flatMap(gildedRose -> gildedRose.getItems().stream())
+                .map(GildedRose::getItems)
+                .flatMap(List::stream)
                 .filter(item -> item.getSellIn() == 0)
                 .map(Item::getName).collect(Collectors.toList());
 
-                //Then
+        //Then
         assertThat(notSellingItems).containsOnly("+5 Dexterity Vest", "+5 Dexterity Vest", "Backstage passes to a TAFKAL80ETC concert");
     }
 }
