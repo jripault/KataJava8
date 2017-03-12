@@ -1,8 +1,5 @@
 package org.codingdojo.java8;
 
-import org.codingdojo.java8.GildedRose;
-import org.codingdojo.java8.GildedRoseCompany;
-import org.codingdojo.java8.Item;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -11,7 +8,6 @@ import java.util.List;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.not;
 import static org.assertj.core.api.Assertions.offset;
 import static org.assertj.core.data.MapEntry.entry;
 
@@ -135,7 +131,7 @@ public class GildedRoseStreamTest {
         Integer minSellIn = 0;
 
         //Then
-        assertThat(minSellIn).isEqualTo(0);
+        assertThat(minSellIn).isZero();
     }
 
     @Test
@@ -161,7 +157,7 @@ public class GildedRoseStreamTest {
         boolean hasItemWithNoQuality = false;
 
         //Then
-        assertThat(hasItemWithNoQuality).isEqualTo(true);
+        assertThat(hasItemWithNoQuality).isTrue();
     }
 
     @Test
@@ -173,7 +169,7 @@ public class GildedRoseStreamTest {
         boolean allItemsHaveName = false;
 
         //Then
-        assertThat(allItemsHaveName).isEqualTo(true);
+        assertThat(allItemsHaveName).isTrue();
     }
 
     @Test
@@ -189,7 +185,7 @@ public class GildedRoseStreamTest {
     }
 
     @Test
-    public void shouldGroupBySellIn() throws Exception {
+    public void shouldGroupByQuality() throws Exception {
         //Given
         GildedRose shop = company.shop();
 
@@ -216,7 +212,6 @@ public class GildedRoseStreamTest {
         //Then
         assertThat(averageSellIn).isEqualTo(15.71, offset(0.01));
     }
-
 
     @Test
     public void shouldGetQualityFromAllShops() throws Exception {
