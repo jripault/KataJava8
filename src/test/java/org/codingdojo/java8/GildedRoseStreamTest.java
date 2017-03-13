@@ -187,7 +187,7 @@ public class GildedRoseStreamTest {
         }
 
         //Then
-        assertThat(minSellIn).isEqualTo(0);
+        assertThat(minSellIn).isZero();
     }
 
     @Test
@@ -225,7 +225,7 @@ public class GildedRoseStreamTest {
         }
 
         //Then
-        assertThat(hasItemWithNoQuality).isEqualTo(true);
+        assertThat(hasItemWithNoQuality).isTrue();
     }
 
     @Test
@@ -247,7 +247,7 @@ public class GildedRoseStreamTest {
         }
 
         //Then
-        assertThat(allItemsHaveName).isEqualTo(true);
+        assertThat(allItemsHaveName).isTrue();
     }
 
     @Test
@@ -273,7 +273,7 @@ public class GildedRoseStreamTest {
     }
 
     @Test
-    public void shouldGroupBySellIn() throws Exception {
+    public void shouldGroupByQuality() throws Exception {
         //Given
         GildedRose shop = company.shop();
 
