@@ -59,7 +59,7 @@
     <h1><i class="fa fa-download"></i> Installation</h1>
     <ul>
         <li>
-            Environnement : (Eclipse ou pour change <a href="https://www.jetbrains.com/idea/">IntelliJ</a>)
+            Environnement : (Eclipse ou pour changer <a href="https://www.jetbrains.com/idea/">IntelliJ</a>)
         </li>
         <li><a href="https://github.com/jripault/KataMock">Le code</a></li>
         <li>Pour les tests :
@@ -115,7 +115,9 @@
 <section id="theorie-optional" class="coding-dojo">
     <h1><i class="fa"></i>Un peu de théorie - Optional</h1>
     <ul>
-        <li>Représente la présence ou non d'une valeur : <pre>Optional&lt;Integer&gt;</pre></li>
+        <li>Représente la présence ou non d'une valeur :
+            <pre>Optional&lt;Integer&gt;</pre>
+        </li>
         <li>Eviter les null checks (isPresent, ifPresent)
             <pre>personRepository.getWinnerByName2(name)
                 .ifPresent(p -> sendMail(p.getMail(), "You win..."));</pre>
@@ -140,7 +142,10 @@
     <h1><i class="fa"></i>Un peu de théorie - FunctionalInterface</h1>
     <ul>
         <li>Interface avec une unique méthode abstraite</li>
-        <li><pre>@FunctionalInterface</pre> (pas obligatoire)</li>
+        <li>
+            <pre>@FunctionalInterface</pre>
+            (pas obligatoire)
+        </li>
         <li>A la base des lambdas</li>
     </ul>
 </section>
@@ -156,9 +161,24 @@
     }
 });</pre>
             Remplacé par :
+            <pre>Name res = parser.parse("Eric Clapton", (firstName, lastName) -> new Name(firstName, lastName));</pre>
+            ou :
             <pre>Name res = parser.parse("Eric Clapton", Name::new);</pre>
         </li>
     </ul>
+</section>
+<section id="theorie-lambda-2" class="coding-dojo">
+    <h1><i class="fa"></i>Lambda - comment les écrire ?</h1>
+    <pre>@FunctionalInterface
+public interface Operation{
+    int calculer(int x, int y);
+}</pre>
+    <img src="images/lambda.png" style="width: 75%"/>
+    <pre>Operation addition = (x,y) -> x + y;</pre>
+</section>
+
+<section id="theorie-stream" class="coding-dojo">
+    <div style="height: 100%; width: 100%"><img src="images/java_stream.jpg" style="height: 100%; width: 100%"></div>
 </section>
 
 <section id="iteration1" class="iteration title">
@@ -168,7 +188,9 @@
 <section id="memo" class="coding-dojo">
     <h2>Mémo</h2>
     <ul class="items steps">
-        <li>TODO</li>
+        <li>Regarder la doc : signature, exemple</li>
+        <li>Extraire les lambdas si plus d'une ligne</li>
+        <li>Limiter au plus tôt la quantité de données</li>
     </ul>
 </section>
 
@@ -180,7 +202,6 @@
     <h1>Rétro (5 min)</h1>
     <ul class="steps">
         <li>Difficultés rencontrées</li>
-        <li>Type de mock</li>
         <li>Périmètre du test</li>
     </ul>
 </section>
@@ -193,7 +214,6 @@
     <h1>Rétro (5 min)</h1>
     <ul class="steps">
         <li>Difficultés rencontrées</li>
-        <li>Type de mock</li>
         <li>Périmètre du test</li>
     </ul>
 </section>
