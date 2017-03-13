@@ -30,8 +30,9 @@ public class StreamTest {
 
         //When
         List<Integer> numbersList = new ArrayList<>();
-        for (int i = 0; i <= 27; i++) {
-            numbersList.add(i + 3);
+        numbersList.add(0);
+        for (int i = 1; i < 10; i++) {
+            numbersList.add(numbersList.get(i -1) + 3);
         }
 
         //Then
