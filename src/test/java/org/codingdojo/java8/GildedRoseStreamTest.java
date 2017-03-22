@@ -113,7 +113,9 @@ public class GildedRoseStreamTest {
         GildedRose shop = company.shop();
 
         //When
-        Integer total = shop.getItems().stream().mapToInt(Item::getSellIn).sum();
+        //Integer total = shop.getItems().stream().mapToInt(Item::getSellIn).sum();
+        // Or ::
+        Integer total = shop.getItems().stream().collect(Collectors.summingInt(Item::getSellIn));
 
         //Then
         assertThat(total).isEqualTo(110);
@@ -222,7 +224,9 @@ public class GildedRoseStreamTest {
         GildedRose shop = company.shop();
 
         //When
-        double averageSellIn = shop.getItems().stream().mapToInt(Item::getSellIn).average().getAsDouble();
+        //double averageSellIn = shop.getItems().stream().mapToInt(Item::getSellIn).average().getAsDouble();
+        // OR ::
+        double averageSellIn = shop.getItems().stream().collect(Collectors.averagingDouble(Item::getSellIn));
 
         //Then
         assertThat(averageSellIn).isEqualTo(15.71, offset(0.01));
